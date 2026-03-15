@@ -38,14 +38,7 @@ async function bootstrap() {
     }),
   );
   app.useGlobalInterceptors(new TransformInterceptor(), new ClassSerializerInterceptor(app.get(Reflector)));
-  app.useGlobalFilters({
-    catch(exception, host) {
-      const ctx = host.switchToHttp();
-      const response = ctx.getResponse();
-      console.error('GLOBAL ERROR:', JSON.stringify(exception));
-      response.status(500).json({ error: exception.message || exception });
-    }
-  } as any);
+  app.useGlobalFilters(new HttpExceptionFilter());
 
   const port = configService.get<number>('port')!;
   await app.listen(port);

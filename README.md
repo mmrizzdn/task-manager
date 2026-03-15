@@ -589,3 +589,10 @@ curl -X DELETE http://localhost:3001/tasks/uuid \
 | updated_at    | TIMESTAMP | DEFAULT NOW()           |
 
 **Relation**: One User → Many Tasks (One-to-Many)
+
+---
+
+## Live URL
+
+- **Frontend:** [https://task-manager-iota-rust.vercel.app](https://task-manager-iota-rust.vercel.app)
+- **Backend:** [https://task-manager-api-chi-seven.vercel.app](https://task-manager-api-chi-seven.vercel.app)
