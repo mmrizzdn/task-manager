@@ -11,8 +11,12 @@ async function bootstrap() {
   const configService = app.get(ConfigService);
 
   app.use(cookieParser());
+
+  const corsOrigin = configService.getOrThrow<string>('corsOrigin');
   app.enableCors({
-    origin: ['http://localhost:3000'],
+    origin: corsOrigin.split(','),
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
   });
   app.useGlobalPipes(
