@@ -289,7 +289,10 @@ curl http://localhost:3001/users/uuid
 curl -X PUT http://localhost:3001/users/uuid \
   -H "Content-Type: application/json" \
   -d '{
-    "name": "Ammar Izzudin"
+    "name": "Ammar Izzudin",
+    "email": "izzudin@example.com",
+    "password": "ammar123",
+    "confirm_password": "ammar123"
   }'
 ```
 
