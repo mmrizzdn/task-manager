@@ -1,0 +1,30 @@
+import { IsOptional, IsString, IsIn, IsNumber, Min } from 'class-validator';
+import { Type } from 'class-transformer';
+
+export class QueryUserDto {
+  @IsOptional()
+  @Type(() => Number)
+  @IsNumber()
+  @Min(1)
+  page?: number = 1;
+
+  @IsOptional()
+  @Type(() => Number)
+  @IsNumber()
+  @Min(1)
+  limit?: number = 10;
+
+  @IsOptional()
+  @IsString()
+  @IsIn(['created_at', 'name', 'email'])
+  sort?: string = 'name';
+
+  @IsOptional()
+  @IsString()
+  @IsIn(['asc', 'desc'])
+  order?: string = 'asc';
+
+  @IsOptional()
+  @IsString()
+  search?: string;
+}
