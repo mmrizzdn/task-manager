@@ -1,6 +1,6 @@
 # Task Manager
 
-A Task Manager application for managing daily activities, built with **NestJS** (Backend) & **Next.js** (Frontend).
+A task mnager app for managing daily activities, built with **NestJS** (Backend) & **Next.js** (Frontend).
 
 ## Tech Stack
 
