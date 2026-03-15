@@ -82,6 +82,7 @@ Frontend will run on `http://localhost:3000`
 | -------------- | -------------- | ------- |
 | `PORT`         | Backend port   | `3001`  |
 | `DATABASE_URL` | Database URL   | -       |
+| `REDIS_URL`    | Redis URL      | -       |
 | `JWT_SECRET`   | JWT secret key | -       |
 
 ### Frontend (`frontend/.env`)

@@ -17,10 +17,7 @@ import { createKeyv } from '@keyv/redis';
     CacheModule.registerAsync({
       isGlobal: true,
       useFactory: async (configService: ConfigService) => {
-        const host = configService.get<string>('redis.host');
-        const port = configService.get<number>('redis.port');
-
-        const redisStore = createKeyv(`redis://${host}:${port}`);
+        const redisStore = createKeyv(configService.get<string>('redis.url'));
 
         redisStore.on('error', (err) => {
           console.error('Redis connection error:', err.message);
@@ -38,4 +35,4 @@ import { createKeyv } from '@keyv/redis';
     AuthModule,
   ],
 })
-export class AppModule {}
+export class AppModule { }
