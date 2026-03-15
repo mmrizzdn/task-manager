@@ -1,8 +1,7 @@
 'use client';
 
 import React from 'react';
-import SearchInput from '../SearchInput';
-import SelectField from '../field/SelectField';
+import {SearchInput, SelectField} from '@/components';
 
 interface FilterOption {
   value: string;

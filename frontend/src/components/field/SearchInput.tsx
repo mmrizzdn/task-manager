@@ -8,7 +8,7 @@ interface SearchInputProps {
   placeholder?: string;
 }
 
-export default function SearchInput({ value, onChange, placeholder = 'Search...' }: SearchInputProps) {
+const SearchInput = ({ value, onChange, placeholder = 'Search...' }: SearchInputProps) => {
   return (
     <div className="relative group">
       <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-blue-500 transition-colors" />
@@ -22,3 +22,5 @@ export default function SearchInput({ value, onChange, placeholder = 'Search...'
     </div>
   );
 }
+
+export default SearchInput;

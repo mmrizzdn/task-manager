@@ -7,4 +7,4 @@ export { default as DeleteConfirmDialog } from './DeleteConfirmDialog';
 export { default as EmptyState } from './EmptyState';
 export { default as ErrorAlert } from './ErrorAlert';
 export { default as Pagination } from './Pagination';
-export { default as SearchInput } from './SearchInput';
+export { default as SearchInput } from './field/SearchInput';
