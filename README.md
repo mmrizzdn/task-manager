@@ -1,6 +1,6 @@
 # Task Manager
 
-A task mnager app for managing daily activities, built with **NestJS** (Backend) & **Next.js** (Frontend).
+A task manager app for managing daily activities, built with **NestJS** (Backend) & **Next.js** (Frontend).
 
 ## Tech Stack
 
@@ -35,42 +35,82 @@ git clone https://github.com/madamiz/task-manager.git
 cd task-manager
 ```
 
-### 2. Database Setup
-
-- Configure your database connection in `backend/.env`:
-
-  ```text
-  DATABASE_URL="postgresql://user:password@localhost:5432/task_manager?schema=public"
-  ```
-
-- Run Prisma migration to create tables and database:
-
-  ```bash
-  cd backend
-  npx prisma migrate dev --name init
-  ```
-
-### 3. Backend Setup
+### 2. Backend Setup
 
 ```bash
 cd backend
 cp .env.example .env
 npm install
+```
+
+**Configure your database connection in `backend/.env`:**
+
+```text
+DATABASE_URL="postgresql://user:password@localhost:5432/task_manager?schema=public"
+REDIS_URL="redis://localhost:6379"
+JWT_SECRET="your-secret-key"
+PORT=3001
+```
+
+**Run Prisma migration to create tables:**
+
+```bash
+npx prisma migrate dev --name init
+```
+
+**Generate Prisma Client:**
+
+```bash
+npx prisma generate
+```
+
+**Start the backend server:**
+
+```bash
 npm run start:dev
 ```
 
 Backend will run on `http://localhost:3001`
 
-### 4. Frontend Setup
+### 3. Frontend Setup
 
 ```bash
 cd frontend
 cp .env.example .env
 npm install
+```
+
+**Configure environment variables in `frontend/.env`:**
+
+```text
+NEXT_PUBLIC_API_URL=http://localhost:3001
+```
+
+**Start the frontend application:**
+
+```bash
 npm run dev
 ```
 
 Frontend will run on `http://localhost:3000`
+
+### 4. Running Both Applications
+
+For the best development experience, run the backend and frontend simultaneously in separate terminal windows:
+
+**Terminal 1 (Backend):**
+
+```bash
+cd backend
+npm run start:dev
+```
+
+**Terminal 2 (Frontend):**
+
+```bash
+cd frontend
+npm run dev
+```
 
 ---
 
@@ -578,15 +618,15 @@ curl -X DELETE http://localhost:3001/tasks/uuid \
 
 ### Tasks Table (`tasks`)
 
-| Column        | Type      | Constraint              |
-| ------------- | --------- | ----------------------- |
-| id            | UUID      | PRIMARY KEY             |
-| user_id       | UUID      | FOREIGN KEY → users(id) |
-| title         | VARCHAR   | NOT NULL                |
-| description   | TEXT      | NULLABLE                |
-| is_completedd | BOOLEAN   | DEFAULT false           |
-| created_at    | TIMESTAMP | DEFAULT NOW()           |
-| updated_at    | TIMESTAMP | DEFAULT NOW()           |
+| Column       | Type      | Constraint              |
+| ------------ | --------- | ----------------------- |
+| id           | UUID      | PRIMARY KEY             |
+| user_id      | UUID      | FOREIGN KEY → users(id) |
+| title        | VARCHAR   | NOT NULL                |
+| description  | TEXT      | NULLABLE                |
+| is_completed | BOOLEAN   | DEFAULT false           |
+| created_at   | TIMESTAMP | DEFAULT NOW()           |
+| updated_at   | TIMESTAMP | DEFAULT NOW()           |
 
 **Relation**: One User → Many Tasks (One-to-Many)
 
